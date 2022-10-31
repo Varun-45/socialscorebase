@@ -2,20 +2,8 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import pickle
 import json
-from fastapi.middleware.cors import CORSMiddleware  
 
 app = FastAPI()
-
-origins = ["*"]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"]
-)
-
 
 class model_input(BaseModel):
 
@@ -53,7 +41,7 @@ def survivalprediction(input_parameters:model_input):
     prediction = model.predict([input_list])
 
     if prediction[0]==1:
-        return f"probablity that person will die : {str(prediction_proba[0][0])}"
+        return f"probablity that person will die : {str(prediction_proba[0][1])}"
     else:
-        return f"probablity that person will live {str(prediction_proba[0][0])}"    
+        return f"probablity that person will live : {str(prediction_proba[0][1])}"    
 
