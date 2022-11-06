@@ -19,7 +19,7 @@ class model_input(BaseModel):
 
 
 model = pickle.load(open(
-    r'C:\Users\Lenovo\OneDrive\Desktop\varun\WEBDEV\EMID\API\survival-predicton\Model.pkl', 'rb'))
+    r'Model.pkl', 'rb'))
 
 
 @app.post('/predict')
